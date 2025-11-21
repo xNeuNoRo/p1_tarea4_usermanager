@@ -25,7 +25,7 @@ dependencies {
     implementation libs.guava
 
     // Driver JDBC de MySQL
-    implementation 'mysql:mysql-connector-j:8.0.33'
+    implementation 'com.mysql:mysql-connector-j:8.0.33'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
