@@ -23,6 +23,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation libs.guava
+
+    // Driver JDBC de MySQL
+    implementation 'mysql:mysql-connector-j:8.0.33'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -34,7 +37,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.example.p1.tarea4.App'
+    mainClass = 'com.tarea4.usermanager.App'
 }
 
 tasks.named('test') {
