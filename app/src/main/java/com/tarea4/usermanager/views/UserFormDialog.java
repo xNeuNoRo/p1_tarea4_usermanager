@@ -20,7 +20,9 @@ public class UserFormDialog extends javax.swing.JDialog {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger
             .getLogger(UserFormDialog.class.getName());
+    // Controlador de usuario
     private UserController controller = new UserController();
+    // Usuario actual (para editar) - Siempre que sea null, se creara uno nuevo
     private User currentUser = null;
 
     /**
@@ -350,15 +352,18 @@ public class UserFormDialog extends javax.swing.JDialog {
 
         // Solo aplicar placeholder si el campo está vacío
         if (textField.getText().trim().isEmpty()) {
+            // Aplicar el placeholder y el color gris
             textField.setText(placeholder);
             textField.setForeground(new Color(150, 150, 150));
         } else {
+            // Si ya tiene texto, mantener el color negro
             textField.setForeground(Color.BLACK);
         }
 
         textField.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent e) {
+                // Quitar el placeholder al enfocar el campo
                 if (textField.getForeground().equals(new Color(150, 150, 150)) &&
                         textField.getText().equals(placeholder)) {
 
@@ -369,6 +374,7 @@ public class UserFormDialog extends javax.swing.JDialog {
 
             @Override
             public void focusLost(java.awt.event.FocusEvent e) {
+                // Restaurar el placeholder si el campo queda vacío al perder el foco
                 if (textField.getText().trim().isEmpty()) {
                     textField.setText(placeholder);
                     textField.setForeground(new Color(150, 150, 150));
@@ -384,10 +390,12 @@ public class UserFormDialog extends javax.swing.JDialog {
 
         // Solo aplicar placeholder si está vacío
         if (text.trim().isEmpty()) {
+            // Aplicar el placeholder y el color gris y el echo char en 0
             passwordField.setEchoChar((char) 0);
             passwordField.setText(placeholder);
             passwordField.setForeground(new Color(150, 150, 150));
         } else {
+            // Si ya tiene texto, mantener
             passwordField.setForeground(Color.BLACK);
         }
 
@@ -396,6 +404,7 @@ public class UserFormDialog extends javax.swing.JDialog {
             public void focusGained(java.awt.event.FocusEvent e) {
                 String pass = new String(passwordField.getPassword());
 
+                // Quitar el placeholder al enfocar el campo
                 if (passwordField.getForeground().equals(new Color(150, 150, 150)) &&
                         pass.equals(placeholder)) {
 
@@ -409,6 +418,7 @@ public class UserFormDialog extends javax.swing.JDialog {
             public void focusLost(java.awt.event.FocusEvent e) {
                 String pass = new String(passwordField.getPassword());
 
+                // Restaurar el placeholder si el campo queda vacío al perder el foco
                 if (pass.trim().isEmpty()) {
                     passwordField.setEchoChar((char) 0);
                     passwordField.setText(placeholder);
@@ -439,9 +449,11 @@ public class UserFormDialog extends javax.swing.JDialog {
 
             // Lógica para guardar un nuevo usuario
             try {
+                // Llamar al controlador para crear el usuario
                 controller.createUser(firstname, lastname, email, phoneNumber, username, password, confirmPassword);
 
-                javax.swing.JOptionPane.showMessageDialog(this, "Usuario creado con éxito", "Éxito",
+                // Mostrar mensaje de éxito
+                javax.swing.JOptionPane.showMessageDialog(this, "Usuario creado con éxito", "Exito",
                         javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
                 // Cerrar el diálogo al guardar con éxito
@@ -462,9 +474,11 @@ public class UserFormDialog extends javax.swing.JDialog {
 
             // Lógica para actualizar un usuario existente
             try {
+                // Llamar al controlador para actualizar el usuario
                 controller.updateUser(currentUser.getUsername(), firstname, lastname, email, phoneNumber, username,
                         password);
 
+                // Mostrar mensaje de éxito
                 javax.swing.JOptionPane.showMessageDialog(this, "Usuario actualizado con éxito", "Éxito",
                         javax.swing.JOptionPane.INFORMATION_MESSAGE);
 

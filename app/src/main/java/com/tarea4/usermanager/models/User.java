@@ -9,6 +9,7 @@ package com.tarea4.usermanager.models;
  * @author angel
  */
 public class User {
+    // Atributos del usuario
     private String firstname;
     private String lastname;
     private String email;

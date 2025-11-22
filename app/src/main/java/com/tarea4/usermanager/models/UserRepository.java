@@ -71,6 +71,7 @@ public class UserRepository {
         return users;
     }
 
+    // Buscar un usuario por su username
     public User findByUsername(String username) throws SQLException {
         // Establezco la query
         String sql = "SELECT * FROM users WHERE username = ?";

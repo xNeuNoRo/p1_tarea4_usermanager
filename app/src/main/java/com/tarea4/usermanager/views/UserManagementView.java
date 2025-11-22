@@ -28,6 +28,8 @@ public class UserManagementView extends javax.swing.JFrame {
      */
     public UserManagementView() {
         initComponents();
+        // Desactivar la edicion directa de las celdas de la JTable
+        tblUsers.setDefaultEditor(Object.class, null);
         // Cargar los usuarios en la tabla al iniciar la vista
         loadUsersTable();
     }
@@ -265,6 +267,7 @@ public class UserManagementView extends javax.swing.JFrame {
                 model.addRow(rowData);
             }
         } catch (Exception e) {
+            // Mostrar mensaje de error si falla la carga
             JOptionPane.showMessageDialog(this,
                     "Error al cargar los usuarios: " + e.getMessage(),
                     "Error",
@@ -273,26 +276,37 @@ public class UserManagementView extends javax.swing.JFrame {
     }
 
     private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnUpdateUserActionPerformed
+        // Obtener la fila seleccionada
         int selectedRow = tblUsers.getSelectedRow();
+
+        // Verificar si se selecciono una fila
         if (selectedRow == -1) {
+            // Mostrar mensaje de error si no se selecciono ninguna fila
             JOptionPane.showMessageDialog(this, "Debes seleccionar un usuario valido para actualizar!");
             return;
         }
 
+        // Obtener el username del usuario a actualizar
         String username = tblUsers.getValueAt(selectedRow, 4).toString();
+
         try {
+            // Obtener los datos completos del usuario desde el controlador
             User user = controller.getUser(username);
+
+            // Verificar si el usuario existe
             if (user == null) {
                 JOptionPane.showMessageDialog(this, "Usuario no encontrado!");
                 return;
             }
 
+            // Abrir el dialogo para actualizar el usuario, pasando los datos actuales
             UserFormDialog userFormDialog = new UserFormDialog(this, true, user);
             userFormDialog.setVisible(true);
 
             // Recargar la tabla de usuarios despues de cerrar el dialogo
             loadUsersTable();
         } catch (SQLException e) {
+            // Mostrar mensaje de error si falla la carga
             JOptionPane.showMessageDialog(this,
                     "Error al obtener los datos del usuario: " + e.getMessage(),
                     "Error",
@@ -302,19 +316,29 @@ public class UserManagementView extends javax.swing.JFrame {
     }// GEN-LAST:event_btnUpdateUserActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLogoutActionPerformed
+        // Mostrar la vista de login
         LoginView loginView = new LoginView();
         loginView.setVisible(true);
+
+        // Cerrar la vista actual
         this.dispose();
     }// GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDeleteUserActionPerformed
+        // Obtener la fila seleccionada
         int selectedRow = tblUsers.getSelectedRow();
+
+        // Verificar si se selecciono una fila
         if (selectedRow == -1) {
+            // Mostrar mensaje de error si no se selecciono ninguna fila
             JOptionPane.showMessageDialog(this, "Debes seleccionar un usuario valido para eliminar!");
             return;
         }
 
+        // Obtener el username del usuario a eliminar
         String username = tblUsers.getValueAt(selectedRow, 4).toString();
+
+        // Mostrar mensaje de confirmacion
         int confirmChoice = JOptionPane.showConfirmDialog(
                 this,
                 "¿Está seguro de que desea eliminar el usuario " + username + "?",
@@ -322,10 +346,13 @@ public class UserManagementView extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.WARNING_MESSAGE);
 
+        // Si el usuario confirma la eliminacion
         if (confirmChoice == JOptionPane.YES_OPTION) {
             try {
+                // Llamamos el controlador para eliminar el usuario
                 controller.deleteUser(username);
             } catch (SQLException e) {
+                // Mostrar mensaje de error si falla la eliminacion
                 JOptionPane.showMessageDialog(this,
                         "Error al eliminar el usuario: " + e.getMessage(),
                         "Error",
@@ -333,12 +360,16 @@ public class UserManagementView extends javax.swing.JFrame {
                 return;
             }
 
+            // Luego, recargar la tabla de usuarios
             loadUsersTable();
+
+            // Mostrar feedback de exito
             JOptionPane.showMessageDialog(this, "Usuario eliminado correctamente.");
         }
     }// GEN-LAST:event_btnDeleteUserActionPerformed
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCreateUserActionPerformed
+        // Abrir el dialogo para crear un nuevo usuario
         UserFormDialog userFormDialog = new UserFormDialog(this, true);
         userFormDialog.setVisible(true);
 

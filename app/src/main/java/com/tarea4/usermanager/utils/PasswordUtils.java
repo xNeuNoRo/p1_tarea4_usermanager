@@ -13,7 +13,7 @@ import java.util.Base64;
  * @author angel
  */
 public class PasswordUtils {
-
+    // Metodo para hashear una contraseña usando SHA-256
     public static String hash(String password) {
         try {
             // Obtenemos una instancia de SHA-256
@@ -28,6 +28,7 @@ public class PasswordUtils {
         }
     }
     
+    // Metodo para comparar una contraseña plana con una hasheada
     public static boolean compare(String plain, String hash) {
         // Recibo la password plana (sin hashear) y la hasheo para retornar la comparacion que seria un boolean
         return hash(plain).equals(hash);

@@ -18,6 +18,7 @@ public class RegisterView extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger
             .getLogger(RegisterView.class.getName());
+    // Instancia del controlador de registro
     private RegisterController controller = new RegisterController();
 
     /**
@@ -356,12 +357,14 @@ public class RegisterView extends javax.swing.JFrame {
 
     // Agregar estilo de placeholder a un JTextField
     private void addPlaceholderStyle(JTextField textField, String placeholder) {
+        // Establecer el texto y el color inicial del placeholder
         textField.setText(placeholder);
         textField.setForeground(new Color(150, 150, 150));
 
         textField.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent e) {
+                // Eliminar el placeholder y establecerle el color BLACK al enfocar el campo
                 if (textField.getText().equals(placeholder)) {
                     textField.setText("");
                     textField.setForeground(Color.BLACK);
@@ -370,6 +373,7 @@ public class RegisterView extends javax.swing.JFrame {
 
             @Override
             public void focusLost(java.awt.event.FocusEvent e) {
+                // Restaurar el placeholder y establecer un color gris si el campo está vacío al perder el foco
                 if (textField.getText().isEmpty()) {
                     textField.setText(placeholder);
                     textField.setForeground(new Color(150, 150, 150));
@@ -380,6 +384,7 @@ public class RegisterView extends javax.swing.JFrame {
 
     // Agregar estilo de placeholder a un JPasswordField
     private void addPlaceholderStyle(JPasswordField passwordField, String placeholder) {
+        // Establecer el texto y el color inicial del placeholder
         passwordField.setEchoChar((char) 0);
         passwordField.setText(placeholder);
         passwordField.setForeground(new Color(150, 150, 150));
@@ -387,6 +392,7 @@ public class RegisterView extends javax.swing.JFrame {
         passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent e) {
+                // Eliminar el placeholder, establecer el echo char y el color BLACK al enfocar el campo
                 String pass = new String(passwordField.getPassword());
                 if (pass.equals(placeholder)) {
                     passwordField.setText("");
@@ -398,6 +404,7 @@ public class RegisterView extends javax.swing.JFrame {
             @Override
             public void focusLost(java.awt.event.FocusEvent e) {
                 String pass = new String(passwordField.getPassword());
+                // Restaurar el placeholder, eliminar el echo char y establecer un color gris si el campo está vacío al perder el foco
                 if (pass.isEmpty()) {
                     passwordField.setEchoChar((char) 0);
                     passwordField.setText(placeholder);
@@ -418,15 +425,21 @@ public class RegisterView extends javax.swing.JFrame {
         String confirmPassword = new String(txtCheckPass.getPassword());
 
         try {
+            // Llamar al controlador para registrar el usuario
             controller.register(firstname, lastname, email, phoneNumber, username, password, confirmPassword);
-            javax.swing.JOptionPane.showMessageDialog(this, "Registro exitoso. Ahora puedes iniciar sesión.", "Éxito",
+
+            // Mostrar mensaje de éxito
+            javax.swing.JOptionPane.showMessageDialog(this, "Registro exitoso. Ahora puedes iniciar sesión.", "Exito",
                     javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
             // Redirigir a la vista de login
             LoginView loginView = new LoginView();
             loginView.setVisible(true);
+
+            // Cerrar la vista de registro
             this.dispose();
         } catch (Exception e) {
+            // Mostrar mensaje de error
             javax.swing.JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
                     javax.swing.JOptionPane.ERROR_MESSAGE);
             logger.log(java.util.logging.Level.SEVERE, "Error during registration", e);
@@ -434,8 +447,11 @@ public class RegisterView extends javax.swing.JFrame {
     }// GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnGoToLoginActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGoToLoginActionPerformed
+        // Abrir la vista de login
         LoginView loginView = new LoginView();
         loginView.setVisible(true);
+
+        // Cerrar la vista de registro
         this.dispose();
     }// GEN-LAST:event_btnGoToLoginActionPerformed
 

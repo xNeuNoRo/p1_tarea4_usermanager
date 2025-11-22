@@ -15,6 +15,7 @@ import com.tarea4.usermanager.models.UserService;
  * @author angel
  */
 public class UserController {
+    // Instancia del servicio de usuario
     private final UserService service;
 
     // Constructor para inicializar el servicio

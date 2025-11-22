@@ -15,6 +15,7 @@ import java.util.List;
 
 // Servicio que consume el Repositorio y sera utilizado por el controlador
 public class UserService {
+    // Instancia del repositorio
     private final UserRepository repository;
 
     // Constructor para inicializar el repositorio

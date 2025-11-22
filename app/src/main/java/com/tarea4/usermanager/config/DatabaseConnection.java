@@ -15,13 +15,14 @@ import java.sql.SQLException;
 public class DatabaseConnection {
     private static Connection db;
 
+    // Metodo para obtener la conexion a la base de datos
     public static Connection getDb() {
         if (db == null) {
             try {
                 // Instanciar AppConfig
                 AppConfig config = AppConfig.getInstance();
 
-                // Valores de la db
+                // Obtener el Host + Credenciales de la db
                 String url = config.get("db.url");
                 String user = config.get("db.user");
                 String pass = config.get("db.pass");

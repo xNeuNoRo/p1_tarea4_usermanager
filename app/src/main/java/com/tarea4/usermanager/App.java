@@ -12,6 +12,7 @@ import com.tarea4.usermanager.views.LoginView;
  */
 public class App {
     public static void main(String[] args) {
+        // Iniciar con la vista del login
         LoginView loginView = new LoginView();
         loginView.setVisible(true);
     }
