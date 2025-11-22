@@ -105,6 +105,7 @@ public class UserFormDialog extends javax.swing.JDialog {
         btnSaveUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         pnlMain.setBackground(new java.awt.Color(245, 245, 247));
 
