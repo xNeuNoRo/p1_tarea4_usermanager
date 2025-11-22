@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 > Proyecto de práctica: CRUD de Usuarios en Java Swing<br>Aplicación creada con Netbeans Apache.  
-<br>
+
 > Ángel González Muñoz - Mat. 2025-1122
 
 ## Tabla de contenidos
