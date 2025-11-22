@@ -414,15 +414,25 @@ public class RegisterView extends javax.swing.JFrame {
         });
     }
 
+    // Obtener el valor real de un campo, ignorando el placeholder
+    public String getFieldWithoutPlaceholder(JTextField textField, String placeholder) {
+        String text = textField.getText();
+        return text.equals(placeholder) ? "" : text;
+    }
+    public String getFieldWithoutPlaceholder(JPasswordField passwordField, String placeholder) {
+        String text = new String(passwordField.getPassword());
+        return text.equals(placeholder) ? "" : text;
+    }
+
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRegisterActionPerformed
         // Lógica para el registro de usuario
-        String firstname = txtFirstname.getText();
-        String lastname = txtLastname.getText();
-        String email = txtEmail.getText();
-        String phoneNumber = txtPhone.getText();
-        String username = txtUsername.getText();
-        String password = new String(txtPassword.getPassword());
-        String confirmPassword = new String(txtCheckPass.getPassword());
+        String firstname = getFieldWithoutPlaceholder(txtFirstname, "Ingrese su nombre");
+        String lastname = getFieldWithoutPlaceholder(txtLastname, "Ingrese su apellido");
+        String email = getFieldWithoutPlaceholder(txtEmail, "Ingrese su correo");
+        String phoneNumber = getFieldWithoutPlaceholder(txtPhone, "Ingrese su telefono");
+        String username = getFieldWithoutPlaceholder(txtUsername, "Ingrese su nombre de usuario");
+        String password = getFieldWithoutPlaceholder(txtPassword, "Ingrese su contraseña");
+        String confirmPassword = getFieldWithoutPlaceholder(txtCheckPass, "Confirme su contraseña");
 
         try {
             // Llamar al controlador para registrar el usuario

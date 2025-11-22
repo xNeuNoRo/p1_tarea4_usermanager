@@ -70,7 +70,7 @@ public class UserFormDialog extends javax.swing.JDialog {
         addPlaceholderStyle(txtPhone, "Ingrese su telefono");
         addPlaceholderStyle(txtUsername, "Ingrese su nombre de usuario");
         addPlaceholderStyle(txtPassword, "Ingrese su contraseña actual");
-        addPlaceholderStyle(txtCheckPass, "Confirme su contraseña");
+        addPlaceholderStyle(txtCheckPass, "Ingrese una nueva contraseña");
     }
 
     /**
@@ -428,18 +428,29 @@ public class UserFormDialog extends javax.swing.JDialog {
         });
     }
 
+    // Obtener el valor real de un campo, ignorando el placeholder
+    public String getFieldWithoutPlaceholder(JTextField textField, String placeholder) {
+        String text = textField.getText();
+        return text.equals(placeholder) ? "" : text;
+    }
+    public String getFieldWithoutPlaceholder(JPasswordField passwordField, String placeholder) {
+        String text = new String(passwordField.getPassword());
+        return text.equals(placeholder) ? "" : text;
+    }
+
     private void btnSaveUserActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSaveUserActionPerformed
         // Obtener los datos del formulario
-        String firstname = txtFirstname.getText();
-        String lastname = txtLastname.getText();
-        String email = txtEmail.getText();
-        String phoneNumber = txtPhone.getText();
-        String username = txtUsername.getText();
-        String password = new String(txtPassword.getPassword());
-        String confirmPassword = new String(txtCheckPass.getPassword());
+        String firstname = getFieldWithoutPlaceholder(txtFirstname, "Ingrese su nombre");
+        String lastname = getFieldWithoutPlaceholder(txtLastname, "Ingrese su apellido");
+        String email = getFieldWithoutPlaceholder(txtEmail, "Ingrese su correo");
+        String phoneNumber = getFieldWithoutPlaceholder(txtPhone, "Ingrese su telefono");
+        String username = getFieldWithoutPlaceholder(txtUsername, "Ingrese su nombre de usuario");
 
         // Si currentUser es null, entonces es un nuevo usuario
         if (currentUser == null) {
+            String password = getFieldWithoutPlaceholder(txtPassword, "Ingrese su contraseña");
+            String confirmPassword = getFieldWithoutPlaceholder(txtCheckPass, "Confirme su contraseña");
+
             // Validar que las contraseñas coincidan
             if (!password.equals(confirmPassword)) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Error",
@@ -465,6 +476,9 @@ public class UserFormDialog extends javax.swing.JDialog {
                 logger.log(java.util.logging.Level.SEVERE, "Error al crear el usuario", e);
             }
         } else {
+            String password = getFieldWithoutPlaceholder(txtPassword, "Ingrese su contraseña actual");
+            String newPassword = getFieldWithoutPlaceholder(txtCheckPass, "Ingrese una nueva contraseña");
+
             // Validar que la contraseña actual sea correcta comparando hashes
             if (PasswordUtils.compare(password, currentUser.getPassword()) == false) {
                 javax.swing.JOptionPane.showMessageDialog(this, "La contraseña actual no es correcta", "Error",
@@ -476,7 +490,7 @@ public class UserFormDialog extends javax.swing.JDialog {
             try {
                 // Llamar al controlador para actualizar el usuario
                 controller.updateUser(currentUser.getUsername(), firstname, lastname, email, phoneNumber, username,
-                        password);
+                        newPassword);
 
                 // Mostrar mensaje de éxito
                 javax.swing.JOptionPane.showMessageDialog(this, "Usuario actualizado con éxito", "Éxito",

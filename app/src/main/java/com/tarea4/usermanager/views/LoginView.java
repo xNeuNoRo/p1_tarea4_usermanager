@@ -280,10 +280,20 @@ public class LoginView extends javax.swing.JFrame {
         });
     }
 
+    // Obtener el texto de un campo sin el placeholder
+    public String getFieldWithoutPlaceholder(JTextField textField, String placeholder) {
+        String text = textField.getText();
+        return text.equals(placeholder) ? "" : text;
+    }
+    public String getFieldWithoutPlaceholder(JPasswordField passwordField, String placeholder) {
+        String text = new String(passwordField.getPassword());
+        return text.equals(placeholder) ? "" : text;
+    }
+
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLoginActionPerformed
         // Obtener los valores de los campos de texto
-        String username = txtUsername.getText();
-        String password = new String(txtPassword.getPassword());
+        String username = getFieldWithoutPlaceholder(txtUsername, "Ingrese su nombre de usuario");
+        String password = getFieldWithoutPlaceholder(txtPassword, "Ingrese su contraseña");
 
         try {
             // Llamar al metodo login del controlador
