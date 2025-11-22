@@ -34,15 +34,16 @@ gradle run
 
 ## Nota
 
-Deberas crear la tabla "users" en tu base de datos MySQL con el siguiente query:
+Deberas crear la tabla "usuarios" en tu base de datos MySQL con el siguiente query:
 ```sql
-CREATE TABLE users (
-    username VARCHAR(50) PRIMARY KEY,
-    firstname VARCHAR(100) NOT NULL,
-    lastname VARCHAR(100) NOT NULL,
-    email VARCHAR(150) NOT NULL,
-    phone_number VARCHAR(20) NOT NULL,
-    password VARCHAR(255) NOT NULL
+CREATE TABLE usuarios (
+    idUser INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    UserName VARCHAR(50) NOT NULL,
+    Nombre VARCHAR(100) NOT NULL,
+    Apellido VARCHAR(100) NOT NULL,
+    Email VARCHAR(150) NOT NULL,
+    Telefono VARCHAR(20) NOT NULL,
+    Password VARCHAR(255) NOT NULL
 );
 ```
 
