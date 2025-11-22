@@ -10,6 +10,15 @@
 
 > Ángel González Muñoz - Mat. 2025-1122
 
+## Tabla de contenidos
+
+- [Contenido](#contenido)
+- [Arquitectura (MVC)](#arquitectura-mvc)
+- [Estructura](#estructura)
+- [Screenshots](#screenshots)
+- [Cómo ejecutarlo](#como-ejecutarlo)
+- [Nota](#nota)
+
 ## Contenido
 
 - POO aplicada (Encapsulamiento, Herencia, etc.)
