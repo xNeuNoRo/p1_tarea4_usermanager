@@ -142,28 +142,25 @@
                           <Component id="txtCheckPass" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblCheckPass" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblUsername" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtUsername" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPassword" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="lblUsername" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                                  <Component id="lblEmail" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="lblPassword" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <Component id="lblCheckPass" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblFirstname" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtFirstname" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblLastname" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtLastname" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPhone" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtPhone" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLastname" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                          <Component id="lblPhone" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="lblFirstname" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="55" max="32767" attributes="0"/>
                   </Group>
