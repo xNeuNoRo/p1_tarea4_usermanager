@@ -27,11 +27,32 @@ public class UserService {
     public void register(String firstname, String lastname, String email, String phoneNumber, String username,
             String password, String confirmPassword) throws SQLException, Exception {
         // Validaciones
-        if (firstname.isBlank() || lastname.isBlank() || email.isBlank() || phoneNumber.isBlank() || username.isBlank()
-                || password.isBlank() || confirmPassword.isBlank()) {
+        if (firstname.isBlank() && lastname.isBlank() && email.isBlank() && phoneNumber.isBlank() && username.isBlank()
+                && password.isBlank() && confirmPassword.isBlank()) {
             throw new Exception("Todos los campos son obligatorios.");
         }
-
+        // Validar campo por campo para mensajes mas especificos
+        if (firstname.isBlank()) {
+            throw new Exception("El nombre es obligatorio.");
+        }
+        if (lastname.isBlank()) {
+            throw new Exception("El apellido es obligatorio.");
+        }
+        if (email.isBlank()) {
+            throw new Exception("El email es obligatorio.");
+        }
+        if (phoneNumber.isBlank()) {
+            throw new Exception("El numero de telefono es obligatorio.");
+        }
+        if (username.isBlank()) {
+            throw new Exception("El nombre de usuario es obligatorio.");
+        }
+        if (password.isBlank()) {
+            throw new Exception("La contraseña es obligatoria.");
+        }
+        if (confirmPassword.isBlank()) {
+            throw new Exception("La confirmación de la contraseña es obligatoria.");
+        }
         if (!password.equals(confirmPassword)) {
             throw new Exception("Las contraseñas no coinciden.");
         }
