@@ -1,7 +1,7 @@
 # Programacion I Tarea 4 - User Manager
 
 [![Estado](https://img.shields.io/badge/status-completed-brightgreen)](https://github.com/xNeuNoRo/p1_tarea4_usermanager/)
-[![Gradle Groovy](https://img.shields.io/badge/bundler-gradle%20groovy-blue)](https://vitejs.dev/)
+[![Gradle Groovy](https://img.shields.io/badge/bundler-gradle%20groovy-blue)](https://gradle.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 > Proyecto de práctica: CRUD de Usuarios en Java Swing
