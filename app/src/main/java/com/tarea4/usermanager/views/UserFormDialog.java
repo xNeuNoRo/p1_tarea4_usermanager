@@ -345,6 +345,7 @@ public class UserFormDialog extends javax.swing.JDialog {
                                 .addGap(0, 0, 0)));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Agregar estilo de placeholder a un JTextField
@@ -480,28 +481,27 @@ public class UserFormDialog extends javax.swing.JDialog {
             String newPassword = getFieldWithoutPlaceholder(txtCheckPass, "Ingrese una nueva contraseña");
 
             // Validar que la contraseña actual sea correcta comparando hashes
-            if (PasswordUtils.compare(password, currentUser.getPassword()) == false) {
+            // TODO: fallback para que sea compatible con usuarios con contraseñas sin hash
+            // Ya que asi esta en la bd de almacenitla
+            if (password.equals(currentUser.getPassword()) || PasswordUtils.compare(password, currentUser.getPassword())) {
+                // Lógica para actualizar un usuario existente
+                try {
+                        // Llamar al controlador para actualizar el usuario
+                        controller.updateUser(currentUser.getUsername(), firstname, lastname, email, phoneNumber, username, newPassword);
+                        
+                        // Mostrar mensaje de éxito
+                        javax.swing.JOptionPane.showMessageDialog(this, "Usuario actualizado con éxito", "Éxito", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        
+                        // Cerrar el diálogo al guardar con éxito
+                        this.dispose();
+                } catch (Exception e) {
+                        javax.swing.JOptionPane.showMessageDialog(this, e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                        logger.log(java.util.logging.Level.SEVERE, "Error al actualizar el usuario", e);
+                }
+            } else {
                 javax.swing.JOptionPane.showMessageDialog(this, "La contraseña actual no es correcta", "Error",
                         javax.swing.JOptionPane.ERROR_MESSAGE);
                 return;
-            }
-
-            // Lógica para actualizar un usuario existente
-            try {
-                // Llamar al controlador para actualizar el usuario
-                controller.updateUser(currentUser.getUsername(), firstname, lastname, email, phoneNumber, username,
-                        newPassword);
-
-                // Mostrar mensaje de éxito
-                javax.swing.JOptionPane.showMessageDialog(this, "Usuario actualizado con éxito", "Éxito",
-                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-                // Cerrar el diálogo al guardar con éxito
-                this.dispose();
-            } catch (Exception e) {
-                javax.swing.JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
-                        javax.swing.JOptionPane.ERROR_MESSAGE);
-                logger.log(java.util.logging.Level.SEVERE, "Error al actualizar el usuario", e);
             }
         }
     }// GEN-LAST:event_btnSaveUserActionPerformed

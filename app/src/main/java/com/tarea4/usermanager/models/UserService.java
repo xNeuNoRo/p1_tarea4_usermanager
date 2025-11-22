@@ -87,7 +87,10 @@ public class UserService {
 
         // Verificar la contraseña comparado hashes
         // password seria la contraseña plana y user.getPassword() la hasheada
-        return PasswordUtils.compare(password, user.getPassword());
+        // ------------------------------------------------------------------------
+        // TODO: fallback para que sea compatible con usuarios con contraseñas sin hash
+        // Ya que asi esta en la bd de almacenitla
+        return password.equals(user.getPassword()) || PasswordUtils.compare(password, user.getPassword());
     }
 
     // Obtener todos los usuarios

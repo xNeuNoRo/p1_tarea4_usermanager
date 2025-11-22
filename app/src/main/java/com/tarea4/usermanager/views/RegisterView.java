@@ -353,6 +353,7 @@ public class RegisterView extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Agregar estilo de placeholder a un JTextField

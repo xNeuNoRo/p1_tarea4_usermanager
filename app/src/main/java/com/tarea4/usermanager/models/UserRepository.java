@@ -14,6 +14,8 @@ import java.util.List;
  * @author angel
  */
 
+// TODO: adaptar las querys del repositorio para que sea compatible con la bd que proporcionaron en clase
+
 // Repositorio de funciones que consumira el servicio
 public class UserRepository {
     private final Connection db;
@@ -26,7 +28,7 @@ public class UserRepository {
     // Guardar un usuario en la bd
     public void save(User user) throws SQLException {
         // Establezco la query con variables "?"
-        String sql = "INSERT INTO users (firstname, lastname, email, phone_number, username, password) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (Nombre, Apellido, Email, Telefono, UserName, Password) VALUES (?, ?, ?, ?, ?, ?)";
 
         // Utilizo PreparedStatement para prevenir Inyeccion SQL
         PreparedStatement preparedQuery = db.prepareStatement(sql);
@@ -48,7 +50,7 @@ public class UserRepository {
         List<User> users = new ArrayList<>();
 
         // Establezco la query
-        String sql = "SELECT * FROM users";
+        String sql = "SELECT * FROM usuarios";
 
         // Utilizo PreparedStatement para prevenir Inyeccion SQL
         PreparedStatement preparedQuery = db.prepareStatement(sql);
@@ -59,12 +61,12 @@ public class UserRepository {
             // Creo un nuevo usuario en memoria instanciando la clase y lo agrego a la lista
             users.add(
                     new User(
-                            result.getString("firstname"),
-                            result.getString("lastname"),
-                            result.getString("email"),
-                            result.getString("phone_number"),
-                            result.getString("username"),
-                            result.getString("password")));
+                            result.getString("Nombre"),
+                            result.getString("Apellido"),
+                            result.getString("Email"),
+                            result.getString("Telefono"),
+                            result.getString("UserName"),
+                            result.getString("Password")));
         }
 
         // Retorno la lista de usuarios
@@ -74,7 +76,7 @@ public class UserRepository {
     // Buscar un usuario por su username
     public User findByUsername(String username) throws SQLException {
         // Establezco la query
-        String sql = "SELECT * FROM users WHERE username = ?";
+        String sql = "SELECT * FROM usuarios WHERE UserName = ?";
 
         // Utilizo PreparedStatement para prevenir Inyeccion SQL
         PreparedStatement preparedQuery = db.prepareStatement(sql);
@@ -87,12 +89,12 @@ public class UserRepository {
         // Si encontro un usuario con ese username
         if (result.next()) {
             return new User(
-                    result.getString("firstname"),
-                    result.getString("lastname"),
-                    result.getString("email"),
-                    result.getString("phone_number"),
-                    result.getString("username"),
-                    result.getString("password"));
+                    result.getString("Nombre"),
+                    result.getString("Apellido"),
+                    result.getString("Email"),
+                    result.getString("Telefono"),
+                    result.getString("UserName"),
+                    result.getString("Password"));
         }
 
         // Si no encontro ningun usuario, retorno null
@@ -101,7 +103,7 @@ public class UserRepository {
 
     // Actualizar un usuario (mediante su username) en la bd
     public void update(User user, String username) throws SQLException {
-        String sql = "UPDATE users SET username = ?, firstname = ?, lastname = ?, email = ?, phone_number = ?, password = ? WHERE username = ?";
+        String sql = "UPDATE usuarios SET UserName = ?, Nombre = ?, Apellido = ?, Email = ?, Telefono = ?, Password = ? WHERE UserName = ?";
 
         // Utilizo PreparedStatement para prevenir Inyeccion SQL
         PreparedStatement preparedQuery = db.prepareStatement(sql);
@@ -121,7 +123,7 @@ public class UserRepository {
 
     // Eliminar un usuario (por username) de la bd
     public void delete(String username) throws SQLException {
-        String sql = "DELETE FROM users WHERE username = ?";
+        String sql = "DELETE FROM usuarios WHERE UserName = ?";
 
         // Utilizo PreparedStatement para prevenir Inyeccion SQL
         PreparedStatement preparedQuery = db.prepareStatement(sql);
