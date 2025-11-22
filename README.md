@@ -4,10 +4,8 @@
 [![Gradle Groovy](https://img.shields.io/badge/bundler-gradle%20groovy-blue)](https://gradle.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
-> Proyecto de práctica: CRUD de Usuarios en Java Swing
+> Proyecto de práctica: CRUD de Usuarios en Java Swing<br>Aplicación creada con Netbeans Apache.  
 <br>
-> Aplicación creada con Netbeans Apache.  
-
 > Ángel González Muñoz - Mat. 2025-1122
 
 ## Tabla de contenidos
