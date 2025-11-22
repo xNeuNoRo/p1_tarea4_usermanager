@@ -5,14 +5,66 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 > Proyecto de práctica: CRUD de Usuarios en Java Swing
+<br>
 > Aplicación creada con Netbeans Apache.  
+
+> Ángel González Muñoz - Mat. 2025-1122
 
 ## Contenido
 
-- Arquitectura MVC (Model-View-Controller)
+- POO aplicada (Encapsulamiento, Herencia, etc.)
 - Patrones de diseño (Singleton)
-- Medidas de seguridad como Hashear la contraseña
-- Detalles extra como el rellenar los campos al editar un usuario
+- Arquitectura MVC (Model-View-Controller)
+- Medidas de seguridad tales como: 
+   > - Hashear la contraseña (con fallback a contraseñas planas, en caso de no estar hasheadas)
+   > - Solicitar la contraseña actual antes de actualizar
+- Detalles extra como:
+   > - Rellenar los campos automáticamente al editar un usuario
+   > - Dialogs y ventanas de confirmación para un mejor feedback al usuario
+
+## Arquitectura (MVC)
+
+- **Model** → Person, User, UserRepository, UserService  
+- **View** → LoginView, RegisterView, UserManagementView, etc.  
+- **Controller** → LoginController, RegisterController, UserController  
+
+**Flujo general:**  
+View → Controller → Service → Repository → Database
+
+## Estructura
+
+```bash
+user-manager/
+├── app/
+│   ├── src/
+│   │   └── main/java/com/tarea4/usermanager/ # Paquete principal del proyecto
+│   │       ├── config/ # Configuracion general y de la base de datos
+│   │       │   ├── AppConfig.java # Configuracion de la aplicacion (cargada desde el application.properties)
+│   │       │   └── DatabaseConnection.java # Conexion a la base de datos (SINGLETON)
+│   │       ├── controllers/ # Controladores que manejan la logica de las vistas
+│   │       │   ├── LoginController.java # Controlador para manejar el login del usuario
+│   │       │   ├── RegisterController.java # Controlador para manejar el registro de un usuario
+│   │       │   └── UserController.java # Controlador para administrar los usuarios (CRUD)
+│   │       ├── models/ # Modelos y logica de la app
+│   │       │   ├── Person.java # Clase abstracta persona
+│   │       │   ├── User.java # Clase usuario que hereda la clase persona
+│   │       │   ├── UserRepository.java # Repositorio de funciones que se encarga de todo lo referente a la base de datos
+│   │       │   └── UserService.java # Servicio encargado de gestionar toda la logica de la app consumiendo el repositorio
+│   │       ├── utils/ # Funciones adicionales
+│   │       │   └── PasswordUtils.java # Hashing y comparacion de contraseñas
+│   │       ├── views/ # Interfaces graficas construidas en Netbeans Apache
+│   │       │   ├── LoginView.form
+│   │       │   ├── LoginView.java # Vista del login
+│   │       │   ├── RegisterView.form
+│   │       │   ├── RegisterView.java # Vista de registro de usuarios
+│   │       │   ├── UserFormDialog.form
+│   │       │   ├── UserFormDialog.java # Vista de formulario de usuarios (reutilizado tanto para edicion como creacion)
+│   │       │   ├── UserManagementView.form
+│   │       │   └── UserManagementView.java # Vista donde se encuentran las acciones del CRUD para administrar los usuarios
+│   │       └── App.java # Clase principal que se encarga de ejecutar la vista del Login
+│   └── build.gradle # Configuracion de gradle
+└── settings.gradle # Configuracion de gradle
+```
 
 ## Screenshots
 
@@ -38,6 +90,7 @@ gradle run
 ## Nota
 
 Deberas crear la tabla "usuarios" en tu base de datos MySQL con el siguiente query:
+<br>_(Es totalmente compatible con la estructura de la tabla usuarios en la BD almacenitla)_
 ```sql
 CREATE TABLE usuarios (
     idUser INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -51,7 +104,7 @@ CREATE TABLE usuarios (
 ```
 
 Tambien, debes crear en la carpeta de "resources" el archivo de "application.properties"
-Y agregar las siguientes variables para el correcto funcionamiento del programa:
+<br>Y agregar las siguientes variables para el correcto funcionamiento del programa:
 
 ```properties
 # Aqui pones el url de tu base de datos MySQL incluyendo el prefijo 'jdbc'
@@ -63,4 +116,6 @@ db.pass=neunoro_dev
 ```
 
 Basicamente sigue la estructura del "application.example.properties".
+<br>Asegurate de no dejar espacios accidentales para que todo funcione debidamente.
+
 > Ojo: Esta base de datos de ejemplo corre en un contenedor Docker local, por lo que el usuario y contraseña usados en este archivo NO te funcionarán y existen únicamente para fines prácticos del proyecto.
