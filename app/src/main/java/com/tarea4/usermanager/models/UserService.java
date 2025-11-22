@@ -74,6 +74,12 @@ public class UserService {
         return repository.findAll();
     }
 
+    // Obtener un usuario por su username
+    public User getUserByUsername(String username) throws SQLException {
+        // Simplemente llamamos la funcion findByUsername del repositorio
+        return repository.findByUsername(username);
+    }
+
     // Actualizar un usuario
     public void update(String firstname, String lastname, String email, String phoneNumber, String username,
             String password)
@@ -109,7 +115,8 @@ public class UserService {
 
     // Eliminar un usuario
     public void delete(String username) throws SQLException {
-        // Simplemente llamamos la funcion delete del repositorio y le pasamos el username
+        // Simplemente llamamos la funcion delete del repositorio y le pasamos el
+        // username
         repository.delete(username);
     }
 }
