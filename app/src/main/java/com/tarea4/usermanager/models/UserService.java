@@ -82,7 +82,7 @@ public class UserService {
         User user = repository.findByUsername(username);
         // Si no existe, lanzar error
         if (user == null) {
-            throw new Exception("Usuario no encontrado.");
+            throw new Exception("Usuario no encontrado. Debe registrarse primero.");
         }
 
         // Verificar la contraseña comparado hashes
@@ -118,7 +118,7 @@ public class UserService {
 
         // Si no existe, lanzar error
         if (user == null) {
-            throw new SQLException("Usuario no encontrado.");
+            throw new SQLException("Usuario no encontrado. Posiblemente fue eliminado anteriormente.");
         }
 
         // Actualizar los datos del usuario
