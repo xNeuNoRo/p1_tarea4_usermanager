@@ -14,12 +14,42 @@
 - Medidas de seguridad como Hashear la contraseña
 - Detalles extra como el rellenar los campos al editar un usuario
 
+## Screenshots
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 1rem" align="center">
+  <img src="assets/Register.png" width="400" />
+  <img src="assets/Login.png" width="400" />
+  <img src="assets/UserManagement.png" width="400" />
+</div>
+
+## Como ejecutarlo
+
+1. Clonar el repositorio  
+2. Crear la base de datos con el script SQL [(Leer nota)](#nota)
+3. Crear `application.properties` con tus credenciales [(Leer nota)](#nota)
+4. Ejecutar el proyecto desde NetBeans o usando:
+```bash
+gradle run
+```
+
 ## Nota
 
-Debes crear en la carpeta de "resources" el archivo de "application.properties"
+Deberas crear la tabla "users" en tu base de datos MySQL con el siguiente query:
+```sql
+CREATE TABLE users (
+    username VARCHAR(50) PRIMARY KEY,
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+```
+
+Tambien, debes crear en la carpeta de "resources" el archivo de "application.properties"
 Y agregar las siguientes variables para el correcto funcionamiento del programa:
 
-```
+```properties
 # Aqui pones el url de tu base de datos MySQL incluyendo el prefijo 'jdbc'
 db.url=jdbc:mysql://localhost:3306/p1tarea4
 
