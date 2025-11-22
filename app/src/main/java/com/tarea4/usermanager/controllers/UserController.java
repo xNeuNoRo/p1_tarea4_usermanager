@@ -34,9 +34,9 @@ public class UserController {
     }
 
     // Actualizar un usuario existente
-    public void updateUser(String firstname, String lastname, String email, String phoneNumber, String username,
+    public void updateUser(String username, String firstname, String lastname, String email, String phoneNumber, String newUsername,
             String password) throws SQLException, Exception {
-        service.update(firstname, lastname, email, phoneNumber, username, password);
+        service.update(username, firstname, lastname, email, phoneNumber, newUsername, password);
     }
 
     // Eliminar un usuario

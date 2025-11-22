@@ -99,19 +99,20 @@ public class UserRepository {
     }
 
     // Actualizar un usuario (mediante su username) en la bd
-    public void update(User user) throws SQLException {
-        String sql = "UPDATE users SET firstname = ?, lastname = ?, email = ?, phone_number = ?, password = ? WHERE username = ?";
+    public void update(User user, String username) throws SQLException {
+        String sql = "UPDATE users SET username = ?, firstname = ?, lastname = ?, email = ?, phone_number = ?, password = ? WHERE username = ?";
 
         // Utilizo PreparedStatement para prevenir Inyeccion SQL
         PreparedStatement preparedQuery = db.prepareStatement(sql);
 
         // Asigno los valores a las variables "?"
-        preparedQuery.setString(1, user.getFirstname());
-        preparedQuery.setString(2, user.getLastname());
-        preparedQuery.setString(3, user.getEmail());
-        preparedQuery.setString(4, user.getPhoneNumber());
-        preparedQuery.setString(5, user.getPassword());
-        preparedQuery.setString(6, user.getUsername());
+        preparedQuery.setString(1, user.getUsername());
+        preparedQuery.setString(2, user.getFirstname());
+        preparedQuery.setString(3, user.getLastname());
+        preparedQuery.setString(4, user.getEmail());
+        preparedQuery.setString(5, user.getPhoneNumber());
+        preparedQuery.setString(6, user.getPassword());
+        preparedQuery.setString(7, username);
 
         // Ejecuto la query
         preparedQuery.executeUpdate();

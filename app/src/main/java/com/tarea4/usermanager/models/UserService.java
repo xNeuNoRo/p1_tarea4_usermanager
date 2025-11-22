@@ -81,12 +81,13 @@ public class UserService {
     }
 
     // Actualizar un usuario
-    public void update(String firstname, String lastname, String email, String phoneNumber, String username,
+    public void update(String username, String firstname, String lastname, String email, String phoneNumber,
+            String newUsername,
             String password)
             throws SQLException, Exception {
         // Validaciones
         if (firstname.isBlank() || lastname.isBlank() || email.isBlank() || phoneNumber.isBlank()
-                || username.isBlank()) {
+                || newUsername.isBlank()) {
             throw new Exception("Todos los campos son obligatorios.");
         }
 
@@ -103,6 +104,7 @@ public class UserService {
         user.setLastname(lastname);
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
+        user.setUsername(newUsername);
 
         // Si la contraseña no esta vacia, actualizarla (hasheandola)
         if (password != null && !password.isBlank()) {
@@ -110,7 +112,7 @@ public class UserService {
         }
 
         // Guardar los cambios en la bd
-        repository.update(user);
+        repository.update(user, username);
     }
 
     // Eliminar un usuario
