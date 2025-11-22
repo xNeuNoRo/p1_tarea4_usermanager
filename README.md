@@ -24,7 +24,10 @@
 
 ## Como ejecutarlo
 
-1. Clonar el repositorio  
+1. Clonar el repositorio con
+```bash
+git clone https://github.com/xNeuNoRo/p1_tarea4_usermanager angelgonzalez_tarea4
+```
 2. Crear la base de datos con el script SQL [(Leer nota)](#nota)
 3. Crear `application.properties` con tus credenciales [(Leer nota)](#nota)
 4. Ejecutar el proyecto desde NetBeans o usando:
