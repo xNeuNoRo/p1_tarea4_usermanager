@@ -234,6 +234,7 @@ public class RegisterView extends javax.swing.JFrame {
         lblGoToLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGoToLogin.setText("¿Ya tienes una cuenta?");
 
+        btnGoToLogin.setBackground(new java.awt.Color(235, 235, 235));
         btnGoToLogin.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnGoToLogin.setForeground(new java.awt.Color(46, 58, 89));
         btnGoToLogin.setText("Iniciar sesión");

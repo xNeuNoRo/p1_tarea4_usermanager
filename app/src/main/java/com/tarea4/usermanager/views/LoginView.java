@@ -143,6 +143,7 @@ public class LoginView extends javax.swing.JFrame {
         lblGoToRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblGoToRegister.setText("¿No has creado una cuenta?");
 
+        btnGoToRegister.setBackground(new java.awt.Color(235, 235, 235));
         btnGoToRegister.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btnGoToRegister.setForeground(new java.awt.Color(46, 58, 89));
         btnGoToRegister.setText("Registrarse");
