@@ -70,6 +70,7 @@ public class RegisterView extends javax.swing.JFrame {
         btnGoToLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         pnlMain.setBackground(new java.awt.Color(245, 245, 247));
         pnlMain.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -284,6 +285,7 @@ public class RegisterView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Agregar estilo de placeholder a un JTextField

@@ -105,6 +105,7 @@ public class UserFormDialog extends javax.swing.JDialog {
         btnSaveUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         pnlMain.setBackground(new java.awt.Color(245, 245, 247));
 
@@ -293,6 +294,7 @@ public class UserFormDialog extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Agregar estilo de placeholder a un JTextField
