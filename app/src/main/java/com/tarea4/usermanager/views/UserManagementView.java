@@ -4,6 +4,8 @@
  */
 package com.tarea4.usermanager.views;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -40,6 +42,11 @@ public class UserManagementView extends javax.swing.JFrame {
         tblUsers.setDefaultEditor(Object.class, null);
         // Cargar los usuarios en la tabla al iniciar la vista
         loadUsersTable();
+
+        // Agregar icono personalizado
+        Image icon = Toolkit.getDefaultToolkit().getImage(
+                getClass().getResource("/assets/management.png"));
+        setIconImage(icon);
     }
 
     /**

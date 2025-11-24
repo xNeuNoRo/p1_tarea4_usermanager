@@ -4,6 +4,8 @@
  */
 package com.tarea4.usermanager.views;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -71,6 +73,11 @@ public class UserFormDialog extends javax.swing.JDialog {
         addPlaceholderStyle(txtUsername, "Ingrese su nombre de usuario");
         addPlaceholderStyle(txtPassword, "Ingrese su contraseña actual");
         addPlaceholderStyle(txtCheckPass, "Ingrese una nueva contraseña");
+
+        // Agregar icono personalizado
+        Image icon = Toolkit.getDefaultToolkit().getImage(
+                getClass().getResource("/assets/form.png"));
+        setIconImage(icon);
     }
 
     /**

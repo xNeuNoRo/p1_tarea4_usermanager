@@ -4,6 +4,8 @@
  */
 package com.tarea4.usermanager.views;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -30,6 +32,11 @@ public class LoginView extends javax.swing.JFrame {
         // Agregar estilos de placeholder a los campos de texto
         addPlaceholderStyle(txtUsername, "Ingrese su nombre de usuario");
         addPlaceholderStyle(txtPassword, "Ingrese su contraseña");
+
+        // Agregar icono personalizado
+        Image icon = Toolkit.getDefaultToolkit().getImage(
+                getClass().getResource("/assets/login.png"));
+        setIconImage(icon);
     }
 
     /**

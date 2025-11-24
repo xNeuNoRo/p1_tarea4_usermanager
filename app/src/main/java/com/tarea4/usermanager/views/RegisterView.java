@@ -4,6 +4,8 @@
  */
 package com.tarea4.usermanager.views;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -35,6 +37,11 @@ public class RegisterView extends javax.swing.JFrame {
         addPlaceholderStyle(txtUsername, "Ingrese su nombre de usuario");
         addPlaceholderStyle(txtPassword, "Ingrese su contraseña");
         addPlaceholderStyle(txtCheckPass, "Confirme su contraseña");
+
+        // Agregar icono personalizado
+        Image icon = Toolkit.getDefaultToolkit().getImage(
+                getClass().getResource("/assets/register.png"));
+        setIconImage(icon);
     }
 
     /**
