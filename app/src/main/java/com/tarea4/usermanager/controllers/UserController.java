@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.tarea4.usermanager.models.User;
-import com.tarea4.usermanager.models.UserService;
+import com.tarea4.usermanager.services.UserService;
 
 /**
  *

@@ -26,6 +26,9 @@ dependencies {
 
     // Driver JDBC de MySQL
     implementation 'com.mysql:mysql-connector-j:8.0.33'
+
+    // Argon2 para hashear las passwords
+    implementation 'de.mkammerer:argon2-jvm:2.11'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

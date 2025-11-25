@@ -6,7 +6,7 @@ package com.tarea4.usermanager.controllers;
 
 import java.sql.SQLException;
 
-import com.tarea4.usermanager.models.UserService;
+import com.tarea4.usermanager.services.UserService;
 
 /**
  *
